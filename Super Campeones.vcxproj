@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Home.cpp" />
+    <ClCompile Include="PlayerEntity.cpp" />
     <ClCompile Include="SelectionEntity.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -126,6 +127,7 @@
     <ClInclude Include="Home.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="PlayerEntity.h" />
     <ClInclude Include="SelectionEntity.h" />
   </ItemGroup>
   <ItemGroup>
