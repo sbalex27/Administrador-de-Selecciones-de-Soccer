@@ -1,13 +1,15 @@
 #pragma once
-#include<vector>
-#include "SelectionEntity.h";
+#include "SelectionEntity.h"
+
+using namespace System::Collections::Generic;
+
 
 ref struct SelectionRepository abstract {
 	/// <summary>
 	/// Fetch and index all the results
 	/// </summary>
 	/// <returns>A collection of selection entities</returns>
-	virtual std::vector<SelectionEntity^> index() abstract;
+	virtual List<SelectionEntity^>^ index() abstract;
 
 	/// <summary>
 	/// Show an specified selection

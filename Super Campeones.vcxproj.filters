@@ -33,6 +33,9 @@
     <ClCompile Include="MatchEntity.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="SelectionTestRepository.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Home.h">
@@ -51,6 +54,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="SelectionRepository.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionTestRepository.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
