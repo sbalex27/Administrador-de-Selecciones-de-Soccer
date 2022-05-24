@@ -42,6 +42,9 @@
     <ClCompile Include="AreaTestRepository.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="MatchTestRepository.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Home.h">
@@ -75,6 +78,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="AreaTestRepository.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchRepository.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchTestRepository.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
