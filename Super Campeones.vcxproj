@@ -133,6 +133,7 @@
     <ClInclude Include="MatchEntity.h" />
     <ClInclude Include="PlayerEntity.h" />
     <ClInclude Include="SelectionEntity.h" />
+    <ClInclude Include="SelectionRepository.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Home.resx">
