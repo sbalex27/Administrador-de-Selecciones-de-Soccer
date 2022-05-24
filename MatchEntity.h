@@ -1,6 +1,6 @@
 using namespace System;
 
-enum MatchType
+enum class MatchType : Int32
 {
 	Official, Friendly
 };

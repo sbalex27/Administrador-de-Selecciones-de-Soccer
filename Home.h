@@ -1,4 +1,5 @@
 #pragma once
+#include "MatchRepository.h"
 
 namespace SuperCampeones {
 
@@ -8,6 +9,7 @@ namespace SuperCampeones {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace MySql::Data::MySqlClient;
 
 	/// <summary>
 	/// Resumen de Home
@@ -15,13 +17,18 @@ namespace SuperCampeones {
 	public ref class Home : public System::Windows::Forms::Form
 	{
 	public:
-		Home(void)
+		Home(MatchRepository^ matchRepository)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			this->matchRepository = matchRepository;
+			this->dataGridViewMatches->DataSource = matchRepository->index();
 		}
+	private: System::Windows::Forms::DataGridView^ dataGridViewMatches;
+	public:
+		   MatchRepository^ matchRepository;
 
 	protected:
 		/// <summary>
@@ -46,8 +53,10 @@ namespace SuperCampeones {
 	private: System::Windows::Forms::ToolStripMenuItem^ crearJugadorToolStripMenuItem;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+
+
 	private: System::Windows::Forms::DataGridView^ dataGridView2;
+	private: System::Windows::Forms::ToolStripMenuItem^ probarConexiónToolStripMenuItem;
 
 
 	protected:
@@ -57,7 +66,7 @@ namespace SuperCampeones {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -70,18 +79,19 @@ namespace SuperCampeones {
 			this->archivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->crearSelecciónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->crearEncuentroToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->aplicaciónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->crearAreaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->crearJugadorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->aplicaciónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->probarConexiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->dataGridViewMatches = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->mainMenuStrip->SuspendLayout();
 			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewMatches))->BeginInit();
 			this->groupBox2->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -110,19 +120,34 @@ namespace SuperCampeones {
 			// crearSelecciónToolStripMenuItem
 			// 
 			this->crearSelecciónToolStripMenuItem->Name = L"crearSelecciónToolStripMenuItem";
-			this->crearSelecciónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->crearSelecciónToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->crearSelecciónToolStripMenuItem->Text = L"Crear Selección";
 			this->crearSelecciónToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearSelecciónToolStripMenuItem_Click);
 			// 
 			// crearEncuentroToolStripMenuItem
 			// 
 			this->crearEncuentroToolStripMenuItem->Name = L"crearEncuentroToolStripMenuItem";
-			this->crearEncuentroToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->crearEncuentroToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->crearEncuentroToolStripMenuItem->Text = L"Crear Encuentro";
+			// 
+			// crearAreaToolStripMenuItem
+			// 
+			this->crearAreaToolStripMenuItem->Name = L"crearAreaToolStripMenuItem";
+			this->crearAreaToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->crearAreaToolStripMenuItem->Text = L"Crear Area";
+			// 
+			// crearJugadorToolStripMenuItem
+			// 
+			this->crearJugadorToolStripMenuItem->Name = L"crearJugadorToolStripMenuItem";
+			this->crearJugadorToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->crearJugadorToolStripMenuItem->Text = L"Crear Jugador";
 			// 
 			// aplicaciónToolStripMenuItem
 			// 
-			this->aplicaciónToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
+			this->aplicaciónToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->salirToolStripMenuItem,
+					this->probarConexiónToolStripMenuItem
+			});
 			this->aplicaciónToolStripMenuItem->Name = L"aplicaciónToolStripMenuItem";
 			this->aplicaciónToolStripMenuItem->Size = System::Drawing::Size(75, 20);
 			this->aplicaciónToolStripMenuItem->Text = L"Aplicación";
@@ -130,25 +155,20 @@ namespace SuperCampeones {
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(163, 22);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::salirToolStripMenuItem_Click);
 			// 
-			// crearAreaToolStripMenuItem
+			// probarConexiónToolStripMenuItem
 			// 
-			this->crearAreaToolStripMenuItem->Name = L"crearAreaToolStripMenuItem";
-			this->crearAreaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->crearAreaToolStripMenuItem->Text = L"Crear Area";
-			// 
-			// crearJugadorToolStripMenuItem
-			// 
-			this->crearJugadorToolStripMenuItem->Name = L"crearJugadorToolStripMenuItem";
-			this->crearJugadorToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->crearJugadorToolStripMenuItem->Text = L"Crear Jugador";
+			this->probarConexiónToolStripMenuItem->Name = L"probarConexiónToolStripMenuItem";
+			this->probarConexiónToolStripMenuItem->Size = System::Drawing::Size(163, 22);
+			this->probarConexiónToolStripMenuItem->Text = L"Probar Conexión";
+			this->probarConexiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::probarConexiónToolStripMenuItem_Click);
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->dataGridView1);
+			this->groupBox1->Controls->Add(this->dataGridViewMatches);
 			this->groupBox1->Dock = System::Windows::Forms::DockStyle::Left;
 			this->groupBox1->Location = System::Drawing::Point(0, 24);
 			this->groupBox1->Name = L"groupBox1";
@@ -156,6 +176,15 @@ namespace SuperCampeones {
 			this->groupBox1->TabIndex = 2;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Últimos Encuentros";
+			// 
+			// dataGridViewMatches
+			// 
+			this->dataGridViewMatches->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridViewMatches->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridViewMatches->Location = System::Drawing::Point(3, 16);
+			this->dataGridViewMatches->Name = L"dataGridViewMatches";
+			this->dataGridViewMatches->Size = System::Drawing::Size(337, 357);
+			this->dataGridViewMatches->TabIndex = 1;
 			// 
 			// groupBox2
 			// 
@@ -167,15 +196,6 @@ namespace SuperCampeones {
 			this->groupBox2->TabIndex = 3;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Selecciones";
-			// 
-			// dataGridView1
-			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->dataGridView1->Location = System::Drawing::Point(3, 16);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(337, 357);
-			this->dataGridView1->TabIndex = 0;
 			// 
 			// dataGridView2
 			// 
@@ -200,8 +220,8 @@ namespace SuperCampeones {
 			this->mainMenuStrip->ResumeLayout(false);
 			this->mainMenuStrip->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewMatches))->EndInit();
 			this->groupBox2->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -211,7 +231,27 @@ namespace SuperCampeones {
 	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
 	}
-private: System::Void crearSelecciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void crearSelecciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void probarConexiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		MySqlConnection^ connection = gcnew MySqlConnection("datasource=localhost;port=3306;username=root;password=root");
+		MySqlCommand^ command = gcnew MySqlCommand("SELECT * FROM super_champions.players", connection);
+		MySqlDataReader^ dataReader;
+		DataTable^ dataTable = gcnew DataTable();
+
+		try
+		{
+			connection->Open();
+			dataReader = command->ExecuteReader();
+			dataTable->Load(dataReader);
+
+			MessageBox::Show("Conexión exitosa");
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->ToString());
+		}
+		this->dataGridViewMatches->DataSource = dataTable;
+	}
+	};
 }

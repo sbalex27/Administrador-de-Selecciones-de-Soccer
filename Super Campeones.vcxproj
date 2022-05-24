@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -122,6 +123,7 @@
     <ClCompile Include="AreaTestRepository.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="MatchEntity.cpp" />
+    <ClCompile Include="MatchSqlRepository.cpp" />
     <ClCompile Include="MatchTestRepository.cpp" />
     <ClCompile Include="PlayerEntity.cpp" />
     <ClCompile Include="PlayerTestRepository.cpp" />
@@ -138,6 +140,7 @@
     </ClInclude>
     <ClInclude Include="MatchEntity.h" />
     <ClInclude Include="MatchRepository.h" />
+    <ClInclude Include="MatchSqlRepository.h" />
     <ClInclude Include="MatchTestRepository.h" />
     <ClInclude Include="PlayerEntity.h" />
     <ClInclude Include="PlayerRepository.h" />
