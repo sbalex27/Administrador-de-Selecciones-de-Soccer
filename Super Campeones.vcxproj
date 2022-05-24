@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AreaEntity.cpp" />
+    <ClCompile Include="AreaTestRepository.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="MatchEntity.cpp" />
     <ClCompile Include="PlayerEntity.cpp" />
@@ -129,6 +130,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AreaEntity.h" />
+    <ClInclude Include="AreaRepository.h" />
+    <ClInclude Include="AreaTestRepository.h" />
     <ClInclude Include="Home.h">
       <FileType>CppForm</FileType>
     </ClInclude>
