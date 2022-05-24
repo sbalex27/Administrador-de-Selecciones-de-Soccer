@@ -15,14 +15,14 @@ enum Leg
 ref class PlayerEntity
 {
 public:
-	PlayerEntity(Int32^, Int32^, String^, String^, Position,
+	PlayerEntity(Int32^, Int32^, String^, Int32^, Position,
 		Int32^, String^, Leg, Boolean^, String^,
 		String^, Single^);
 
 	Int32^ id;
 	Int32^ selection_id;
 	String^ name;
-	String^ number_shirt;
+	Int32^ number_shirt;
 	Position position;
 	Int32^ age;
 	String^ skills;

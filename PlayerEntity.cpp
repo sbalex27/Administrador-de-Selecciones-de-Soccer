@@ -4,7 +4,7 @@ PlayerEntity::PlayerEntity(
 	Int32^ id,
 	Int32^ selection_id,
 	String^ name,
-	String^ number_shirt,
+	Int32^ number_shirt,
 	Position position,
 	Int32^ age,
 	String^ skills,
