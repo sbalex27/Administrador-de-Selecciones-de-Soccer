@@ -18,3 +18,18 @@ MatchEntity::MatchEntity(
 	this->visitor_goals = visitor_goals;
 	this->date = date;
 }
+
+String^ MatchEntity::GetMatchTypeString()
+{
+	switch (type)
+	{
+	case MatchType::Official:
+		return "Oficial";
+		break;
+	case MatchType::Friendly:
+		return "Amistoso";
+		break;
+	default:
+		break;
+	}
+}

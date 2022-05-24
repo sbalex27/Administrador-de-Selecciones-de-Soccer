@@ -1,6 +1,6 @@
 #include "MatchTestRepository.h"
 
-MatchEntity^ MatchTestRepository::show(Int32^ id)
+MatchEntity^ MatchTestRepository::show(String^ id)
 {
     return gcnew MatchEntity(2, 3, 4, MatchType::Friendly, 1, 1, DateTime(2022, 11, 29));
 }
@@ -10,12 +10,12 @@ void MatchTestRepository::store(MatchEntity^ match)
     return;
 }
 
-void MatchTestRepository::update(Int32^ id, MatchEntity^ match)
+void MatchTestRepository::update(String^ id, MatchEntity^ match)
 {
     return;
 }
 
-void MatchTestRepository::destroy(Int32^ id)
+void MatchTestRepository::destroy(String^ id)
 {
     return;
 }

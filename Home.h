@@ -1,5 +1,6 @@
 #pragma once
 #include "MatchRepository.h"
+#include "MatchDetailsForm.h"
 
 namespace SuperCampeones {
 
@@ -27,6 +28,8 @@ namespace SuperCampeones {
 			this->dataGridViewMatches->DataSource = matchRepository->index();
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridViewMatches;
+	private: System::Windows::Forms::ToolStripMenuItem^ buscarToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ encuentroToolStripMenuItem;
 	public:
 		   MatchRepository^ matchRepository;
 
@@ -88,6 +91,8 @@ namespace SuperCampeones {
 			this->dataGridViewMatches = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->buscarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->encuentroToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mainMenuStrip->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewMatches))->BeginInit();
@@ -97,9 +102,9 @@ namespace SuperCampeones {
 			// 
 			// mainMenuStrip
 			// 
-			this->mainMenuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->mainMenuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->archivoToolStripMenuItem,
-					this->aplicaciónToolStripMenuItem
+					this->aplicaciónToolStripMenuItem, this->buscarToolStripMenuItem
 			});
 			this->mainMenuStrip->Location = System::Drawing::Point(0, 0);
 			this->mainMenuStrip->Name = L"mainMenuStrip";
@@ -206,6 +211,20 @@ namespace SuperCampeones {
 			this->dataGridView2->Size = System::Drawing::Size(441, 357);
 			this->dataGridView2->TabIndex = 0;
 			// 
+			// buscarToolStripMenuItem
+			// 
+			this->buscarToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->encuentroToolStripMenuItem });
+			this->buscarToolStripMenuItem->Name = L"buscarToolStripMenuItem";
+			this->buscarToolStripMenuItem->Size = System::Drawing::Size(54, 20);
+			this->buscarToolStripMenuItem->Text = L"Buscar";
+			// 
+			// encuentroToolStripMenuItem
+			// 
+			this->encuentroToolStripMenuItem->Name = L"encuentroToolStripMenuItem";
+			this->encuentroToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->encuentroToolStripMenuItem->Text = L"Encuentro";
+			this->encuentroToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::encuentroToolStripMenuItem_Click);
+			// 
 			// Home
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -253,5 +272,9 @@ namespace SuperCampeones {
 		}
 		this->dataGridViewMatches->DataSource = dataTable;
 	}
-	};
+	private: System::Void encuentroToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		MatchDetailsForm^ matchDetailsForm = gcnew MatchDetailsForm(matchRepository);
+		matchDetailsForm->Show();
+	}
+};
 }

@@ -13,9 +13,9 @@ public:
     MatchSqlRepository(String^);
 
     virtual Object^ index() override;
-    virtual MatchEntity^ show(Int32^ id) override;
+    virtual MatchEntity^ show(String^ id) override;
     virtual void store(MatchEntity^ match) override;
-    virtual void update(Int32^ id, MatchEntity^ match) override;
-    virtual void destroy(Int32^ id) override;
+    virtual void update(String^ id, MatchEntity^ match) override;
+    virtual void destroy(String^ id) override;
 };
 
