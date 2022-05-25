@@ -119,6 +119,7 @@ namespace SuperCampeones {
 			this->updateButton->TabIndex = 1;
 			this->updateButton->Text = L"Actualizar";
 			this->updateButton->UseVisualStyleBackColor = true;
+			this->updateButton->Click += gcnew System::EventHandler(this, &AreaDetailsForm::updateButton_Click);
 			// 
 			// deleteButton
 			// 
@@ -128,6 +129,7 @@ namespace SuperCampeones {
 			this->deleteButton->TabIndex = 2;
 			this->deleteButton->Text = L"Eliminar";
 			this->deleteButton->UseVisualStyleBackColor = true;
+			this->deleteButton->Click += gcnew System::EventHandler(this, &AreaDetailsForm::deleteButton_Click);
 			// 
 			// nameTextBox
 			// 
@@ -169,6 +171,30 @@ namespace SuperCampeones {
 		{
 			AreaEntity^ area = this->repository->show(Int32::Parse(idTextBox->Text));
 			this->nameTextBox->Text = area->name;
+		}
+		catch (Exception^ exception)
+		{
+			MessageBox::Show(exception->Message, "Error");
+		}
+	}
+	private: System::Void updateButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			AreaEntity^ area = gcnew AreaEntity(nameTextBox->Text);
+			this->repository->update(Int32::Parse(idTextBox->Text), area);
+			MessageBox::Show("Área Actualizada");
+		}
+		catch (Exception^ exception)
+		{
+			MessageBox::Show(exception->Message, "Error");
+		}
+	}
+	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			this->repository->destroy(Int32::Parse(idTextBox->Text));
+			MessageBox::Show("Área Eliminada");
+			this->Close();
 		}
 		catch (Exception^ exception)
 		{
