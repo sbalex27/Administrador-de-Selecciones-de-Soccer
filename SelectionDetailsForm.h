@@ -74,9 +74,9 @@ namespace SuperCampeones {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->idTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->searchButton = (gcnew System::Windows::Forms::Button());
+			this->idTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->physiotherapistTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->goalkeepingCoachTextBox = (gcnew System::Windows::Forms::TextBox());
@@ -108,22 +108,6 @@ namespace SuperCampeones {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Búsqueda";
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(6, 22);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(18, 13);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"ID";
-			// 
-			// idTextBox
-			// 
-			this->idTextBox->Location = System::Drawing::Point(30, 19);
-			this->idTextBox->Name = L"idTextBox";
-			this->idTextBox->Size = System::Drawing::Size(143, 20);
-			this->idTextBox->TabIndex = 1;
-			// 
 			// searchButton
 			// 
 			this->searchButton->Location = System::Drawing::Point(179, 17);
@@ -133,6 +117,22 @@ namespace SuperCampeones {
 			this->searchButton->Text = L"Buscar";
 			this->searchButton->UseVisualStyleBackColor = true;
 			this->searchButton->Click += gcnew System::EventHandler(this, &SelectionDetailsForm::searchButton_Click);
+			// 
+			// idTextBox
+			// 
+			this->idTextBox->Location = System::Drawing::Point(30, 19);
+			this->idTextBox->Name = L"idTextBox";
+			this->idTextBox->Size = System::Drawing::Size(143, 20);
+			this->idTextBox->TabIndex = 1;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(6, 22);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(18, 13);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"ID";
 			// 
 			// physiotherapistTextBox
 			// 
@@ -254,6 +254,7 @@ namespace SuperCampeones {
 			this->updateButton->TabIndex = 28;
 			this->updateButton->Text = L"Actualizar";
 			this->updateButton->UseVisualStyleBackColor = true;
+			this->updateButton->Click += gcnew System::EventHandler(this, &SelectionDetailsForm::updateButton_Click);
 			// 
 			// deleteButton
 			// 
@@ -307,6 +308,26 @@ namespace SuperCampeones {
 			this->technicalTextBox->Text = selection->technical;
 			this->goalkeepingCoachTextBox->Text = selection->goalkeeping_coach;
 			this->physiotherapistTextBox->Text = selection->physiotherapist;
+		}
+		catch (Exception^ exception)
+		{
+			MessageBox::Show(exception->Message, "Error");
+		}
+	}
+	private: System::Void updateButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			SelectionEntity^ selection = gcnew SelectionEntity(
+				Int32::Parse(areaIdTextBox->Text),
+				Int32::Parse(rankingTextBox->Text),
+				countryTextBox->Text,
+				stadiumTextBox->Text,
+				technicalTextBox->Text,
+				goalkeepingCoachTextBox->Text,
+				physiotherapistTextBox->Text);
+
+			repository->update(Int32::Parse(idTextBox->Text), selection);
+			MessageBox::Show("Seleccion Actualizada");
 		}
 		catch (Exception^ exception)
 		{
