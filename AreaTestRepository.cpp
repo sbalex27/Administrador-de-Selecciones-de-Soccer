@@ -1,31 +1,33 @@
 #include "AreaTestRepository.h"
 
-List<AreaEntity^>^ AreaTestRepository::index()
+Object^ AreaTestRepository::index()
 {
-    auto data = gcnew List<AreaEntity^>();
+	DataTable^ dataTable = gcnew DataTable();
 
-    data->Add(gcnew AreaEntity(1, "CONCACAF"));
-    data->Add(gcnew AreaEntity(2, "LA LIGA"));
+	dataTable->Columns->AddRange(gcnew array<DataColumn^>{gcnew DataColumn("id"), gcnew DataColumn("name")});
 
-    return data;
+	dataTable->Rows->Add(1, "CONCACAF");
+	dataTable->Rows->Add(2, "LA LIGA");
+
+	return dataTable;
 }
 
 AreaEntity^ AreaTestRepository::show(Int32^ id)
 {
-    return gcnew AreaEntity(1, "CONCACAF");
+	return gcnew AreaEntity(1, "CONCACAF");
 }
 
 void AreaTestRepository::store(AreaEntity^ area)
 {
-    return;
+	return;
 }
 
 void AreaTestRepository::update(Int32^ id, AreaEntity^ area)
 {
-    return;
+	return;
 }
 
 void AreaTestRepository::destroy(Int32^ id)
 {
-    return;
+	return;
 }

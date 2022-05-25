@@ -5,7 +5,7 @@
 using namespace System::Collections::Generic;
 
 ref struct AreaRepository abstract {
-	virtual List<AreaEntity^>^ index() abstract;
+	virtual Object^ index() abstract;
 	virtual AreaEntity^ show(Int32^ id) abstract;
 	virtual void store(AreaEntity^ area) abstract;
 	virtual void update(Int32^ id, AreaEntity^ area) abstract;

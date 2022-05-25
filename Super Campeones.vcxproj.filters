@@ -78,6 +78,9 @@
     <ClCompile Include="SelectionDetailsForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="AreaSqlRepository.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Home.h">
@@ -150,6 +153,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="SelectionDetailsForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaSqlRepository.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
