@@ -9,7 +9,7 @@ ref struct SelectionRepository abstract {
 	/// Fetch and index all the results
 	/// </summary>
 	/// <returns>A collection of selection entities</returns>
-	virtual List<SelectionEntity^>^ index() abstract;
+	virtual Object^ index() abstract;
 
 	/// <summary>
 	/// Show an specified selection

@@ -4,10 +4,13 @@ using namespace System;
 ref class SelectionEntity
 {
 public:
-	SelectionEntity(int, int, int, String^, String^, String^, String^, String^);
-	int id;
-	int area_id;
-	int ranking;
+	SelectionEntity(Int32^ id, Int32^ area_id, Int32^ ranking, String^ country, String^ stadium, String^ technical, String^ goalkeeping_coach, String^ phisiotherapist);
+
+	SelectionEntity(Int32^ area_id, Int32^ ranking, String^ country, String^ stadium, String^ technical, String^ goalkeeping_coach, String^ phisiotherapist);
+
+	Int32^ id;
+	Int32^ area_id;
+	Int32^ ranking;
 	String^ country;
 	String^ stadium;
 	String^ technical;
