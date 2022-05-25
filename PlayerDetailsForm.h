@@ -334,6 +334,7 @@ namespace SuperCampeones {
 			this->updateButton->TabIndex = 44;
 			this->updateButton->Text = L"Actualizar";
 			this->updateButton->UseVisualStyleBackColor = true;
+			this->updateButton->Click += gcnew System::EventHandler(this, &PlayerDetailsForm::updateButton_Click);
 			// 
 			// deleteButton
 			// 
@@ -403,6 +404,33 @@ namespace SuperCampeones {
 		catch (Exception^ exception)
 		{
 			MessageBox::Show("Error", exception->Message);
+		}
+	}
+	private: System::Void updateButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			PlayerEntity^ player = gcnew PlayerEntity(
+				Int32::Parse(selectionIdTextBox->Text),
+				nameTextBox->Text,
+				Int32::Parse(numberShirtTextBox->Text),
+				positionTextBox->Text,
+				Int32::Parse(ageTextBox->Text),
+				skillsTextBox->Text,
+				legTextBox->Text,
+				Boolean::Parse(isNationalizedTextBox->Text),
+				belongingTeamTextBox->Text,
+				sponsorTextBox->Text,
+				Single::Parse(marketValueTextBox->Text)
+			);
+
+			repository->update(Int32::Parse(idTextBox->Text), player);
+
+			MessageBox::Show("Jugador actualizado");
+			this->Close();
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Error", ex->Message);
 		}
 	}
 	};

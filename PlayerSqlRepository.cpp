@@ -78,7 +78,7 @@ void PlayerSqlRepository::update(Int32^ id, PlayerEntity^ player)
 {
 	connection->Open();
 
-	MySqlCommand^ command = gcnew MySqlCommand("UPDATE players SET selection_id = @selectionId, name = @name, number_shirt = @numberShirt, position = @position, age = @age, skills = @skills, leg = @leg, is_nationalized = @isNationalized, belonging_team = @belongingTeam, sponsor = @sponsor, market_value = @marketValue", connection);
+	MySqlCommand^ command = gcnew MySqlCommand("UPDATE players SET selection_id = @selectionId, name = @name, number_shirt = @numberShirt, position = @position, age = @age, skills = @skills, leg = @leg, is_nationalized = @isNationalized, belonging_team = @belongingTeam, sponsor = @sponsor, market_value = @marketValue WHERE id = @id", connection);
 
 	command->Parameters->AddWithValue("id", id);
 	command->Parameters->AddWithValue("selectionId", player->selection_id);
