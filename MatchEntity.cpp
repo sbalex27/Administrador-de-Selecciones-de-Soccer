@@ -4,7 +4,7 @@ MatchEntity::MatchEntity(
 	Int32^ id, 
 	Int32^ local_id, 
 	Int32^ visitor_id, 
-	MatchType type, 
+	String^ type, 
 	Int32^ local_goals, 
 	Int32^ visitor_goals, 
 	DateTime^ date
@@ -19,17 +19,14 @@ MatchEntity::MatchEntity(
 	this->date = date;
 }
 
-String^ MatchEntity::GetMatchTypeString()
+MatchEntity::MatchEntity(String^ local_id, String^ visitor_id, String^ type, String^ local_goals, String^ visitor_goals, String^ date)
 {
-	switch (type)
-	{
-	case MatchType::Official:
-		return "Oficial";
-		break;
-	case MatchType::Friendly:
-		return "Amistoso";
-		break;
-	default:
-		break;
-	}
+	this->id = 0;
+	this->local_id = Int32::Parse(local_id);
+	this->visitor_id = Int32::Parse(visitor_id);
+	this->type = type;
+	this->local_goals = Int32::Parse(local_goals);
+	this->visitor_goals = Int32::Parse(visitor_goals);
+	this->date = DateTime::Parse(date);
 }
+

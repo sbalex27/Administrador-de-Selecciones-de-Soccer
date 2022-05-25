@@ -2,7 +2,7 @@
 
 MatchEntity^ MatchTestRepository::show(String^ id)
 {
-    return gcnew MatchEntity(2, 3, 4, MatchType::Friendly, 1, 1, DateTime(2022, 11, 29));
+    return gcnew MatchEntity(2, 3, 4, "Amistoso", 1, 1, DateTime(2022, 11, 29));
 }
 
 void MatchTestRepository::store(MatchEntity^ match)

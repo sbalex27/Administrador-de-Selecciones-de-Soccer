@@ -40,7 +40,8 @@ namespace SuperCampeones {
 	private: System::Windows::Forms::Label^ labelId;
 	protected:
 	private: System::Windows::Forms::TextBox^ idTextBox;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ searchButton;
+
 
 	protected:
 		MatchRepository^ repository;
@@ -61,6 +62,8 @@ namespace SuperCampeones {
 
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::TextBox^ dateTextBox;
+	private: System::Windows::Forms::Button^ updateButton;
+	private: System::Windows::Forms::Button^ deleteButton;
 
 
 	protected:
@@ -69,7 +72,7 @@ namespace SuperCampeones {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -80,7 +83,7 @@ namespace SuperCampeones {
 		{
 			this->labelId = (gcnew System::Windows::Forms::Label());
 			this->idTextBox = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->idLocalTextBox = (gcnew System::Windows::Forms::TextBox());
@@ -94,6 +97,8 @@ namespace SuperCampeones {
 			this->visitorGoalsTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->dateTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->updateButton = (gcnew System::Windows::Forms::Button());
+			this->deleteButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -113,20 +118,20 @@ namespace SuperCampeones {
 			this->idTextBox->Size = System::Drawing::Size(125, 20);
 			this->idTextBox->TabIndex = 1;
 			// 
-			// button1
+			// searchButton
 			// 
-			this->button1->Location = System::Drawing::Point(178, 19);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Buscar";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MatchDetailsForm::button1_Click);
+			this->searchButton->Location = System::Drawing::Point(178, 19);
+			this->searchButton->Name = L"searchButton";
+			this->searchButton->Size = System::Drawing::Size(75, 23);
+			this->searchButton->TabIndex = 2;
+			this->searchButton->Text = L"Buscar";
+			this->searchButton->UseVisualStyleBackColor = true;
+			this->searchButton->Click += gcnew System::EventHandler(this, &MatchDetailsForm::button1_Click);
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->labelId);
-			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Controls->Add(this->searchButton);
 			this->groupBox1->Controls->Add(this->idTextBox);
 			this->groupBox1->Location = System::Drawing::Point(12, 12);
 			this->groupBox1->Name = L"groupBox1";
@@ -231,11 +236,33 @@ namespace SuperCampeones {
 			this->dateTextBox->Size = System::Drawing::Size(125, 20);
 			this->dateTextBox->TabIndex = 14;
 			// 
+			// updateButton
+			// 
+			this->updateButton->Location = System::Drawing::Point(196, 244);
+			this->updateButton->Name = L"updateButton";
+			this->updateButton->Size = System::Drawing::Size(75, 23);
+			this->updateButton->TabIndex = 15;
+			this->updateButton->Text = L"Actualizar";
+			this->updateButton->UseVisualStyleBackColor = true;
+			this->updateButton->Click += gcnew System::EventHandler(this, &MatchDetailsForm::updateButton_Click);
+			// 
+			// deleteButton
+			// 
+			this->deleteButton->Location = System::Drawing::Point(115, 244);
+			this->deleteButton->Name = L"deleteButton";
+			this->deleteButton->Size = System::Drawing::Size(75, 23);
+			this->deleteButton->TabIndex = 16;
+			this->deleteButton->Text = L"Eliminar";
+			this->deleteButton->UseVisualStyleBackColor = true;
+			this->deleteButton->Click += gcnew System::EventHandler(this, &MatchDetailsForm::deleteButton_Click);
+			// 
 			// MatchDetailsForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 249);
+			this->ClientSize = System::Drawing::Size(284, 285);
+			this->Controls->Add(this->deleteButton);
+			this->Controls->Add(this->updateButton);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->dateTextBox);
 			this->Controls->Add(this->label5);
@@ -264,13 +291,32 @@ namespace SuperCampeones {
 
 		idLocalTextBox->Text = result->local_id->ToString();
 		idVisitorTextBox->Text = result->visitor_id->ToString();
-		typeTextBox->Text = result->GetMatchTypeString();
+		typeTextBox->Text = result->type;
 		localGoalsTextBox->Text = result->local_goals->ToString();
 		visitorGoalsTextBox->Text = result->visitor_goals->ToString();
 		dateTextBox->Text = result->date->ToShortDateString();
 
 	}
 	private: System::Void MatchDetailsForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void updateButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		MatchEntity^ toUpdate = gcnew MatchEntity(
+			idLocalTextBox->Text,
+			idVisitorTextBox->Text,
+			typeTextBox->Text,
+			localGoalsTextBox->Text,
+			visitorGoalsTextBox->Text,
+			dateTextBox->Text
+		);
+
+		repository->update(idTextBox->Text, toUpdate);
+
+		MessageBox::Show("Actualización completada");
+	}
+	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		repository->destroy(idTextBox->Text);
+
+		MessageBox::Show("Partido eliminado");
 	}
 };
 }

@@ -14,7 +14,7 @@ using namespace MySql::Data::MySqlClient;
 using namespace SuperCampeones;
 
 int main() {
-	String^ connectionString = "datasource = localhost; port = 3306; username = root; password = root";
+	String^ connectionString = "datasource = localhost; port = 3306; username = root; password = root; database=super_champions";
 
 	MatchRepository^ matchRepository = gcnew MatchSqlRepository(connectionString);
 	AreaRepository^ areaRepository = gcnew AreaTestRepository();
