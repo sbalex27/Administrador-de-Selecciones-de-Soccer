@@ -9,6 +9,7 @@
 #include "SelectionTestRepository.h"
 
 #include "MatchSqlRepository.h"
+#include "PlayerSqlRepository.h"
 
 using namespace MySql::Data::MySqlClient;
 using namespace SuperCampeones;
@@ -18,10 +19,10 @@ int main() {
 
 	MatchRepository^ matchRepository = gcnew MatchSqlRepository(connectionString);
 	AreaRepository^ areaRepository = gcnew AreaTestRepository();
-	PlayerRepository^ playerRepository = gcnew PlayerTestRepository();
+	PlayerRepository^ playerRepository = gcnew PlayerSqlRepository(connectionString);
 	SelectionRepository^ selectionRepository = gcnew SelectionTestRepository();
 
-	Home^ home = gcnew Home(matchRepository);
+	Home^ home = gcnew Home(matchRepository, playerRepository);
 
 	Application::Run(home);
 
