@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AreaCreationForm.cpp" />
+    <ClCompile Include="AreaDetailsForm.cpp" />
     <ClCompile Include="AreaEntity.cpp" />
     <ClCompile Include="AreaIndexForm.cpp" />
     <ClCompile Include="AreaSqlRepository.cpp" />
@@ -146,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AreaCreationForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AreaDetailsForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AreaEntity.h" />
@@ -198,6 +202,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AreaCreationForm.resx">
       <DependentUpon>AreaCreationForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AreaDetailsForm.resx">
+      <DependentUpon>AreaDetailsForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AreaIndexForm.resx">
       <DependentUpon>AreaIndexForm.h</DependentUpon>

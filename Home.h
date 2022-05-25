@@ -11,6 +11,7 @@
 #include "AreaRepository.h"
 #include "AreaIndexForm.h"
 #include "AreaCreationForm.h"
+#include "AreaDetailsForm.h"
 
 namespace SuperCampeones {
 
@@ -60,6 +61,7 @@ namespace SuperCampeones {
 	private: System::Windows::Forms::ToolStripMenuItem^ todasLasSeleccionesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ seleccionToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ todasLasÁreasToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ áreaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ jugadorToolStripMenuItem;
 
 	protected:
@@ -128,6 +130,7 @@ namespace SuperCampeones {
 			this->dataGridViewMatches = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->áreaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mainMenuStrip->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewMatches))->BeginInit();
@@ -160,28 +163,28 @@ namespace SuperCampeones {
 			// crearSelecciónToolStripMenuItem
 			// 
 			this->crearSelecciónToolStripMenuItem->Name = L"crearSelecciónToolStripMenuItem";
-			this->crearSelecciónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->crearSelecciónToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->crearSelecciónToolStripMenuItem->Text = L"Crear Selección";
 			this->crearSelecciónToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearSelecciónToolStripMenuItem_Click);
 			// 
 			// crearEncuentroToolStripMenuItem
 			// 
 			this->crearEncuentroToolStripMenuItem->Name = L"crearEncuentroToolStripMenuItem";
-			this->crearEncuentroToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->crearEncuentroToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->crearEncuentroToolStripMenuItem->Text = L"Crear Encuentro";
 			this->crearEncuentroToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearEncuentroToolStripMenuItem_Click);
 			// 
 			// crearAreaToolStripMenuItem
 			// 
 			this->crearAreaToolStripMenuItem->Name = L"crearAreaToolStripMenuItem";
-			this->crearAreaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->crearAreaToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->crearAreaToolStripMenuItem->Text = L"Crear Area";
 			this->crearAreaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearAreaToolStripMenuItem_Click);
 			// 
 			// crearJugadorToolStripMenuItem
 			// 
 			this->crearJugadorToolStripMenuItem->Name = L"crearJugadorToolStripMenuItem";
-			this->crearJugadorToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->crearJugadorToolStripMenuItem->Size = System::Drawing::Size(159, 22);
 			this->crearJugadorToolStripMenuItem->Text = L"Crear Jugador";
 			this->crearJugadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearJugadorToolStripMenuItem_Click);
 			// 
@@ -211,9 +214,9 @@ namespace SuperCampeones {
 			// 
 			// buscarToolStripMenuItem
 			// 
-			this->buscarToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->buscarToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->encuentroToolStripMenuItem,
-					this->jugadorToolStripMenuItem, this->seleccionToolStripMenuItem
+					this->jugadorToolStripMenuItem, this->seleccionToolStripMenuItem, this->áreaToolStripMenuItem
 			});
 			this->buscarToolStripMenuItem->Name = L"buscarToolStripMenuItem";
 			this->buscarToolStripMenuItem->Size = System::Drawing::Size(54, 20);
@@ -222,21 +225,21 @@ namespace SuperCampeones {
 			// encuentroToolStripMenuItem
 			// 
 			this->encuentroToolStripMenuItem->Name = L"encuentroToolStripMenuItem";
-			this->encuentroToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->encuentroToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->encuentroToolStripMenuItem->Text = L"Encuentro";
 			this->encuentroToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::encuentroToolStripMenuItem_Click);
 			// 
 			// jugadorToolStripMenuItem
 			// 
 			this->jugadorToolStripMenuItem->Name = L"jugadorToolStripMenuItem";
-			this->jugadorToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->jugadorToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->jugadorToolStripMenuItem->Text = L"Jugador";
 			this->jugadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::jugadorToolStripMenuItem_Click);
 			// 
 			// seleccionToolStripMenuItem
 			// 
 			this->seleccionToolStripMenuItem->Name = L"seleccionToolStripMenuItem";
-			this->seleccionToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->seleccionToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->seleccionToolStripMenuItem->Text = L"Selección";
 			this->seleccionToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::seleccionToolStripMenuItem_Click);
 			// 
@@ -310,6 +313,13 @@ namespace SuperCampeones {
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->Size = System::Drawing::Size(441, 357);
 			this->dataGridView2->TabIndex = 0;
+			// 
+			// áreaToolStripMenuItem
+			// 
+			this->áreaToolStripMenuItem->Name = L"áreaToolStripMenuItem";
+			this->áreaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->áreaToolStripMenuItem->Text = L"Área";
+			this->áreaToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::áreaToolStripMenuItem_Click);
 			// 
 			// Home
 			// 
@@ -396,5 +406,9 @@ namespace SuperCampeones {
 		AreaCreationForm^ areaCreationForm = gcnew AreaCreationForm(this->areaRepository);
 		areaCreationForm->Show();
 	}
-	};
+	private: System::Void áreaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		AreaDetailsForm^ areaDetailsForm = gcnew AreaDetailsForm(this->areaRepository);
+		areaDetailsForm->Show();
+	}
+};
 }
