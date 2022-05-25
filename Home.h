@@ -6,6 +6,7 @@
 #include "PlayerCreationForm.h"
 #include "PlayerDetailsForm.h"
 #include "SelectionIndexForm.h"
+#include "SelectionCreationForm.h"
 
 namespace SuperCampeones {
 
@@ -305,6 +306,8 @@ namespace SuperCampeones {
 		Application::Exit();
 	}
 	private: System::Void crearSelecciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		SelectionCreationForm^ selecitonCreationForm = gcnew SelectionCreationForm(this->selectionRepository);
+		selecitonCreationForm->Show();
 	}
 	private: System::Void probarConexiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		MySqlConnection^ connection = gcnew MySqlConnection("datasource=localhost;port=3306;username=root;password=root");
