@@ -23,6 +23,7 @@ SelectionEntity^ SelectionSqlRepository::show(Int32^ id)
 	this->connection->Open();
 
 	MySqlCommand^ command = gcnew MySqlCommand("SELECT * FROM selections WHERE id = @id LIMIT 1", connection);
+	command->Parameters->AddWithValue("id", id);
 
 	MySqlDataReader^ reader = command->ExecuteReader();
 
@@ -38,9 +39,9 @@ SelectionEntity^ SelectionSqlRepository::show(Int32^ id)
 			reader->GetString("goalkeeping_coach"),
 			reader->GetString("physiotherapist"));
 
+		this->connection->Close();
 		return selection;
 	}
-	this->connection->Close();
 
 	throw gcnew Exception("Not found");
 }

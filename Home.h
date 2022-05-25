@@ -7,6 +7,7 @@
 #include "PlayerDetailsForm.h"
 #include "SelectionIndexForm.h"
 #include "SelectionCreationForm.h"
+#include "SelectionDetailsForm.h"
 
 namespace SuperCampeones {
 
@@ -46,6 +47,7 @@ namespace SuperCampeones {
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ todosLosJugadoresToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ todasLasSeleccionesToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ seleccionToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ jugadorToolStripMenuItem;
 
 	protected:
@@ -107,11 +109,12 @@ namespace SuperCampeones {
 			this->jugadorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->coleccionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->todosLosJugadoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->todasLasSeleccionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->dataGridViewMatches = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
-			this->todasLasSeleccionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->seleccionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mainMenuStrip->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewMatches))->BeginInit();
@@ -144,27 +147,27 @@ namespace SuperCampeones {
 			// crearSelecciónToolStripMenuItem
 			// 
 			this->crearSelecciónToolStripMenuItem->Name = L"crearSelecciónToolStripMenuItem";
-			this->crearSelecciónToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->crearSelecciónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->crearSelecciónToolStripMenuItem->Text = L"Crear Selección";
 			this->crearSelecciónToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearSelecciónToolStripMenuItem_Click);
 			// 
 			// crearEncuentroToolStripMenuItem
 			// 
 			this->crearEncuentroToolStripMenuItem->Name = L"crearEncuentroToolStripMenuItem";
-			this->crearEncuentroToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->crearEncuentroToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->crearEncuentroToolStripMenuItem->Text = L"Crear Encuentro";
 			this->crearEncuentroToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearEncuentroToolStripMenuItem_Click);
 			// 
 			// crearAreaToolStripMenuItem
 			// 
 			this->crearAreaToolStripMenuItem->Name = L"crearAreaToolStripMenuItem";
-			this->crearAreaToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->crearAreaToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->crearAreaToolStripMenuItem->Text = L"Crear Area";
 			// 
 			// crearJugadorToolStripMenuItem
 			// 
 			this->crearJugadorToolStripMenuItem->Name = L"crearJugadorToolStripMenuItem";
-			this->crearJugadorToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->crearJugadorToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->crearJugadorToolStripMenuItem->Text = L"Crear Jugador";
 			this->crearJugadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::crearJugadorToolStripMenuItem_Click);
 			// 
@@ -194,9 +197,9 @@ namespace SuperCampeones {
 			// 
 			// buscarToolStripMenuItem
 			// 
-			this->buscarToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->buscarToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->encuentroToolStripMenuItem,
-					this->jugadorToolStripMenuItem
+					this->jugadorToolStripMenuItem, this->seleccionToolStripMenuItem
 			});
 			this->buscarToolStripMenuItem->Name = L"buscarToolStripMenuItem";
 			this->buscarToolStripMenuItem->Size = System::Drawing::Size(54, 20);
@@ -205,14 +208,14 @@ namespace SuperCampeones {
 			// encuentroToolStripMenuItem
 			// 
 			this->encuentroToolStripMenuItem->Name = L"encuentroToolStripMenuItem";
-			this->encuentroToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->encuentroToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->encuentroToolStripMenuItem->Text = L"Encuentro";
 			this->encuentroToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::encuentroToolStripMenuItem_Click);
 			// 
 			// jugadorToolStripMenuItem
 			// 
 			this->jugadorToolStripMenuItem->Name = L"jugadorToolStripMenuItem";
-			this->jugadorToolStripMenuItem->Size = System::Drawing::Size(128, 22);
+			this->jugadorToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->jugadorToolStripMenuItem->Text = L"Jugador";
 			this->jugadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::jugadorToolStripMenuItem_Click);
 			// 
@@ -232,6 +235,13 @@ namespace SuperCampeones {
 			this->todosLosJugadoresToolStripMenuItem->Size = System::Drawing::Size(185, 22);
 			this->todosLosJugadoresToolStripMenuItem->Text = L"Todos los Jugadores";
 			this->todosLosJugadoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::todosLosJugadoresToolStripMenuItem_Click);
+			// 
+			// todasLasSeleccionesToolStripMenuItem
+			// 
+			this->todasLasSeleccionesToolStripMenuItem->Name = L"todasLasSeleccionesToolStripMenuItem";
+			this->todasLasSeleccionesToolStripMenuItem->Size = System::Drawing::Size(185, 22);
+			this->todasLasSeleccionesToolStripMenuItem->Text = L"Todas las Selecciones";
+			this->todasLasSeleccionesToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::todasLasSeleccionesToolStripMenuItem_Click);
 			// 
 			// groupBox1
 			// 
@@ -273,12 +283,12 @@ namespace SuperCampeones {
 			this->dataGridView2->Size = System::Drawing::Size(441, 357);
 			this->dataGridView2->TabIndex = 0;
 			// 
-			// todasLasSeleccionesToolStripMenuItem
+			// seleccionToolStripMenuItem
 			// 
-			this->todasLasSeleccionesToolStripMenuItem->Name = L"todasLasSeleccionesToolStripMenuItem";
-			this->todasLasSeleccionesToolStripMenuItem->Size = System::Drawing::Size(185, 22);
-			this->todasLasSeleccionesToolStripMenuItem->Text = L"Todas las Selecciones";
-			this->todasLasSeleccionesToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::todasLasSeleccionesToolStripMenuItem_Click);
+			this->seleccionToolStripMenuItem->Name = L"seleccionToolStripMenuItem";
+			this->seleccionToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->seleccionToolStripMenuItem->Text = L"Selección";
+			this->seleccionToolStripMenuItem->Click += gcnew System::EventHandler(this, &Home::seleccionToolStripMenuItem_Click);
 			// 
 			// Home
 			// 
@@ -353,5 +363,9 @@ namespace SuperCampeones {
 		SelectionIndexForm^ selectionIndexForm = gcnew SelectionIndexForm(this->selectionRepository);
 		selectionIndexForm->Show();
 	}
-	};
+	private: System::Void seleccionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		SelectionDetailsForm^ selectionDetailsForm = gcnew SelectionDetailsForm(this->selectionRepository);
+		selectionDetailsForm->Show();
+	}
+};
 }

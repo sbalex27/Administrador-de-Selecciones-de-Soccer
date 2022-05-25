@@ -134,6 +134,7 @@
     <ClCompile Include="PlayerSqlRepository.cpp" />
     <ClCompile Include="PlayerTestRepository.cpp" />
     <ClCompile Include="SelectionCreationForm.cpp" />
+    <ClCompile Include="SelectionDetailsForm.cpp" />
     <ClCompile Include="SelectionEntity.cpp" />
     <ClCompile Include="SelectionIndexForm.cpp" />
     <ClCompile Include="SelectionSqlRepository.cpp" />
@@ -173,6 +174,9 @@
     <ClInclude Include="SelectionCreationForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SelectionDetailsForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SelectionEntity.h" />
     <ClInclude Include="SelectionIndexForm.h">
       <FileType>CppForm</FileType>
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SelectionCreationForm.resx">
       <DependentUpon>SelectionCreationForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectionDetailsForm.resx">
+      <DependentUpon>SelectionDetailsForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectionIndexForm.resx">
       <DependentUpon>SelectionIndexForm.h</DependentUpon>
