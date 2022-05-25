@@ -128,6 +128,7 @@
     <ClCompile Include="MatchSqlRepository.cpp" />
     <ClCompile Include="MatchTestRepository.cpp" />
     <ClCompile Include="PlayerEntity.cpp" />
+    <ClCompile Include="PlayerSqlRepository.cpp" />
     <ClCompile Include="PlayerTestRepository.cpp" />
     <ClCompile Include="SelectionEntity.cpp" />
     <ClCompile Include="SelectionTestRepository.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="MatchTestRepository.h" />
     <ClInclude Include="PlayerEntity.h" />
     <ClInclude Include="PlayerRepository.h" />
+    <ClInclude Include="PlayerSqlRepository.h" />
     <ClInclude Include="PlayerTestRepository.h" />
     <ClInclude Include="SelectionEntity.h" />
     <ClInclude Include="SelectionRepository.h" />

@@ -5,7 +5,7 @@
 using namespace System::Collections::Generic;
 
 ref struct PlayerRepository abstract {
-	virtual List<PlayerEntity^>^ index() abstract;
+	virtual Object^ index() abstract;
 	virtual PlayerEntity^ show(Int32^ id) abstract;
 	virtual void store(PlayerEntity^ player) abstract;
 	virtual void update(Int32^ id, PlayerEntity^ player) abstract;

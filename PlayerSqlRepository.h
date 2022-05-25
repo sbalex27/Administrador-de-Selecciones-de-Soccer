@@ -1,12 +1,17 @@
 #pragma once
 #include "PlayerRepository.h"
 
+using namespace MySql::Data::MySqlClient;
 using namespace System::Data;
 
-ref class PlayerTestRepository :
+ref class PlayerSqlRepository :
     public PlayerRepository
 {
 public:
+    PlayerSqlRepository(String^ connectionString);
+
+    MySqlConnection^ connection;
+
     virtual Object^ index() override;
 
     virtual PlayerEntity^ show(Int32^ id) override;
