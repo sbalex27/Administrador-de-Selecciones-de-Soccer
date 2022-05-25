@@ -4,7 +4,8 @@ using namespace System;
 ref class AreaEntity
 {
 public:
-	AreaEntity(Int32^, String^);
+	AreaEntity(Int32^ id, String^ name);
+	AreaEntity(String^ name);
 
 	Int32^ id;
 	String^ name;

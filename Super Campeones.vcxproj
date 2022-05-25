@@ -119,6 +119,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AreaCreationForm.cpp" />
     <ClCompile Include="AreaEntity.cpp" />
     <ClCompile Include="AreaIndexForm.cpp" />
     <ClCompile Include="AreaSqlRepository.cpp" />
@@ -144,6 +145,9 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AreaCreationForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="AreaEntity.h" />
     <ClInclude Include="AreaIndexForm.h">
       <FileType>CppForm</FileType>
@@ -192,6 +196,9 @@
     <ClInclude Include="SelectionTestRepository.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AreaCreationForm.resx">
+      <DependentUpon>AreaCreationForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AreaIndexForm.resx">
       <DependentUpon>AreaIndexForm.h</DependentUpon>
     </EmbeddedResource>
