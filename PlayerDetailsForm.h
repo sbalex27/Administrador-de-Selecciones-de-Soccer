@@ -344,6 +344,7 @@ namespace SuperCampeones {
 			this->deleteButton->TabIndex = 45;
 			this->deleteButton->Text = L"Eliminar";
 			this->deleteButton->UseVisualStyleBackColor = true;
+			this->deleteButton->Click += gcnew System::EventHandler(this, &PlayerDetailsForm::deleteButton_Click);
 			// 
 			// PlayerDetailsForm
 			// 
@@ -426,12 +427,23 @@ namespace SuperCampeones {
 			repository->update(Int32::Parse(idTextBox->Text), player);
 
 			MessageBox::Show("Jugador actualizado");
-			this->Close();
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show("Error", ex->Message);
 		}
 	}
-	};
+	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			repository->destroy(Int32::Parse(idTextBox->Text));
+			MessageBox::Show("Jugador eliminado");
+			this->Close();
+		}
+		catch (Exception^ exception)
+		{
+			MessageBox::Show("Error", exception->Message);
+		}
+	}
+};
 }
