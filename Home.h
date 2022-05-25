@@ -8,6 +8,7 @@
 #include "SelectionIndexForm.h"
 #include "SelectionCreationForm.h"
 #include "SelectionDetailsForm.h"
+#include "AreaRepository.h"
 
 namespace SuperCampeones {
 
@@ -25,7 +26,12 @@ namespace SuperCampeones {
 	public ref class Home : public System::Windows::Forms::Form
 	{
 	public:
-		Home(MatchRepository^ matchRepository, PlayerRepository^ playerRepository, SelectionRepository^ selectionRepository)
+		Home(
+			MatchRepository^ matchRepository,
+			PlayerRepository^ playerRepository,
+			SelectionRepository^ selectionRepository,
+			AreaRepository^ areaRepository
+		)
 		{
 			InitializeComponent();
 			//
@@ -34,6 +40,8 @@ namespace SuperCampeones {
 			this->matchRepository = matchRepository;
 			this->playerRepository = playerRepository;
 			this->selectionRepository = selectionRepository;
+			this->areaRepository = areaRepository;
+
 			this->dataGridViewMatches->DataSource = matchRepository->index();
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridViewMatches;
@@ -43,6 +51,7 @@ namespace SuperCampeones {
 		MatchRepository^ matchRepository;
 		PlayerRepository^ playerRepository;
 		SelectionRepository^ selectionRepository;
+		AreaRepository^ areaRepository;
 	private: System::Windows::Forms::ToolStripMenuItem^ coleccionesToolStripMenuItem;
 	public:
 	private: System::Windows::Forms::ToolStripMenuItem^ todosLosJugadoresToolStripMenuItem;
@@ -367,5 +376,5 @@ namespace SuperCampeones {
 		SelectionDetailsForm^ selectionDetailsForm = gcnew SelectionDetailsForm(this->selectionRepository);
 		selectionDetailsForm->Show();
 	}
-};
+	};
 }
