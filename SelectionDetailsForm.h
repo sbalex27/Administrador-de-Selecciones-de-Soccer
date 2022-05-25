@@ -264,6 +264,7 @@ namespace SuperCampeones {
 			this->deleteButton->TabIndex = 29;
 			this->deleteButton->Text = L"Eliminar";
 			this->deleteButton->UseVisualStyleBackColor = true;
+			this->deleteButton->Click += gcnew System::EventHandler(this, &SelectionDetailsForm::deleteButton_Click);
 			// 
 			// SelectionDetailsForm
 			// 
@@ -334,5 +335,17 @@ namespace SuperCampeones {
 			MessageBox::Show(exception->Message, "Error");
 		}
 	}
-	};
+	private: System::Void deleteButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			this->repository->destroy(Int32::Parse(idTextBox->Text));
+			MessageBox::Show("Selección Eliminada");
+			this->Close();
+		}
+		catch (Exception^ exception)
+		{
+			MessageBox::Show(exception->Message, "Error");
+		}
+	}
+};
 }
