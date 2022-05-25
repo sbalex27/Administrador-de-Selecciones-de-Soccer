@@ -127,6 +127,7 @@
     <ClCompile Include="MatchEntity.cpp" />
     <ClCompile Include="MatchSqlRepository.cpp" />
     <ClCompile Include="MatchTestRepository.cpp" />
+    <ClCompile Include="PlayerCreationForm.cpp" />
     <ClCompile Include="PlayerEntity.cpp" />
     <ClCompile Include="PlayerIndexForm.cpp" />
     <ClCompile Include="PlayerSqlRepository.cpp" />
@@ -152,6 +153,9 @@
     <ClInclude Include="MatchRepository.h" />
     <ClInclude Include="MatchSqlRepository.h" />
     <ClInclude Include="MatchTestRepository.h" />
+    <ClInclude Include="PlayerCreationForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="PlayerEntity.h" />
     <ClInclude Include="PlayerIndexForm.h">
       <FileType>CppForm</FileType>
@@ -172,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MatchDetailsForm.resx">
       <DependentUpon>MatchDetailsForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerCreationForm.resx">
+      <DependentUpon>PlayerCreationForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerIndexForm.resx">
       <DependentUpon>PlayerIndexForm.h</DependentUpon>
